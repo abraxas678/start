@@ -36,6 +36,5 @@ curl -L git.io/antigen > antigen.zsh
 
 cp $HOME/start/dotfiles/.zshrc $HOME/
 cp $HOME/start/dotfiles/.p10k.zsh $HOME/
-rclone move $HOME/start/dotfiles/bin $HOME/bin -P -v
-
+mv $HOME/start/dotfiles/bin/* $HOME/bin/
 
