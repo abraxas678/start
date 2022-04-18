@@ -86,6 +86,7 @@ sudo apt autoremove -y
 
 cp $HOME/start/dotfiles/.zshrc $HOME/
 cp $HOME/start/dotfiles/.p10k.zsh $HOME/
+cp $HOME/start/dotfiles/.taskrc $HOME/
 mv $HOME/start/dotfiles/bin/* $HOME/bin/
 
 
