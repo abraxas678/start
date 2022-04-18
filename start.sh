@@ -4,12 +4,22 @@ echo SETUP GPG MANUALLY SUPERSEC
 echo
 echo BUTTON
 read me
+echo
+echo UPATE AND UPGRADE
+echo
+sleep 2
 sudo apt-get update && sudo apt-get upgrade -y
 cd $HOME
+echo; echo CLONE START; echo
 git clone https://github.com/abraxas678/start.git
 cd start
+echo; echo GPG DERYPT RCLONESETUP; echo
+sleep 2
 gpg --decrypt rclone_secure_setup2gd.sh.asc > rclonesetup.sh
 sudo chmod +x *.sh
+echo; echo RCLONESETUP; echo
+echo BUTTON
+read me
 ./rclonesetup.sh
 rm rclonesetup.sh
 echo
