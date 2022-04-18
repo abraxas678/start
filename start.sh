@@ -1,4 +1,9 @@
 #!/bin/bash
+echo
+echo SETUP GPG MANUALLY SUPERSEC
+echo
+BUTTON
+read me
 sudo apt-get update && sudo apt-get upgrade -y
 cd $HOME
 git clone https://github.com/abraxas678/start.git
