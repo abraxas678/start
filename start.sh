@@ -12,7 +12,7 @@ echo SHH
 echo
 rclone copy gd:/sec/start/id_rsa.asc . -P
 gpg --decrypt id_rsa.asc > id_rsa
-rm *.asc
+rm id*.asc
 sudo mkdir $HOME/.ssh
 sudo chown abraxas678:100 $HOME -R
 sudo chmod 700 -R $HOME
