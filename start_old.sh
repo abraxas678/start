@@ -1,7 +1,7 @@
 #!/bin/bash
 ts=$(date +"%s")
 cd $HOME
-git clone https://github.com/abraxas678/start.git
+git clone git@github.com:abraxas678/start.git
 cd start
 gpg --decrypt rclone_secure_setup2gd.sh.asc > rclonesetup.sh
 sudo chmod +x *.sh
@@ -10,13 +10,16 @@ rm rclonesetup.sh
 echo
 echo SHH
 echo
+<<<<<<< HEAD
 rclone copy gd:/sec/start/id_rsa.asc . -P
 gpg --decrypt id_rsa.asc > id_rsa
-rm id*.asc
+rm *.asc
 sudo mkdir $HOME/.ssh
 sudo chown abraxas678:100 $HOME -R
 sudo chmod 700 -R $HOME
 mv id_rsa $HOME/.ssh
+=======
+>>>>>>> 808fd0759af0af39c8506c534c67abecb83c48fd
 eval `ssh-agent -s`
 sudo chmod 400 ~/.ssh/* -R
 ssh-add ~/.ssh/id_rsa
@@ -29,13 +32,6 @@ sudo chmod 644 ~/.ssh/id_rsa.pub
 echo
 git clone git@github.com:abraxas678/dotfiles.git
 
-echo; cd $HOME
-sudo apt install -y zsh
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-curl -L git.io/antigen > antigen.zsh
 
-cp $HOME/start/dotfiles/.zshrc $HOME/
-cp $HOME/start/dotfiles/.p10k.zsh $HOME/
-rclone move $HOME/start/dotfiles/bin $HOME/bin -P -v
 
 
