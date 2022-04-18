@@ -2,7 +2,7 @@
 echo
 echo SETUP GPG MANUALLY SUPERSEC
 echo
-BUTTON
+echo BUTTON
 read me
 sudo apt-get update && sudo apt-get upgrade -y
 cd $HOME
