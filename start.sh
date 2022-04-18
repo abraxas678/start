@@ -10,6 +10,13 @@ rm rclonesetup.sh
 echo
 echo SHH
 echo
+rclone copy gd:/sec/start/id_rsa.asc . -P
+gpg --decrypt id_rsa.asc > id_rsa
+rm *.asc
+sudo mkdir $HOME/.ssh
+sudo chown abraxas678:100 $HOME -R
+sudo chmod 700 -R $HOME
+mv id_rsa $HOME/.ssh
 eval `ssh-agent -s`
 sudo chmod 400 ~/.ssh/* -R
 ssh-add ~/.ssh/id_rsa
@@ -20,6 +27,6 @@ sudo chmod 644 ~/.ssh/config
 sudo chmod 600 ~/.ssh/id_rsa
 sudo chmod 644 ~/.ssh/id_rsa.pub
 echo
-sudo git clone git@github.com:abraxas678/dotfiles.git
+git clone git@github.com:abraxas678/dotfiles.git
 
 
