@@ -1,7 +1,7 @@
 #!/bin/bash
 ts=$(date +"%s")
 cd $HOME
-git clone git@github.com:abraxas678/start.git
+git clone https://github.com/abraxas678/start.git
 cd start
 gpg --decrypt rclone_secure_setup2gd.sh.asc > rclonesetup.sh
 sudo chmod +x *.sh
