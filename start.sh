@@ -1,6 +1,9 @@
 #!/bin/bash
 echo
-echo SETUP GPG MANUALLY SUPERSEC
+echo SETUP GPG MANUALLY VIA OD VAULT
+echo
+echo "gpg -a --export-secret-keys [key-id] >key.asc"
+echo "gpg --import"
 echo
 echo BUTTON
 read me
@@ -13,7 +16,9 @@ cd $HOME
 echo; echo CLONE START; echo
 git clone https://github.com/abraxas678/start.git
 cd start
-echo; echo GPG DERYPT RCLONESETUP; echo
+echo; echo GPG DECRYPT RCLONESETUP; echo
+echo "gpg --decrypt rclone_secure_setup2gd.sh.asc > rclonesetup.sh"
+echo
 sleep 2
 gpg --decrypt rclone_secure_setup2gd.sh.asc > rclonesetup.sh
 sudo chmod +x *.sh
@@ -23,12 +28,18 @@ read me
 ./rclonesetup.sh
 rm rclonesetup.sh
 echo
-echo SHH
+echo SHH SETUP
+echo "rclone copy gd:/sec/start/id_rsa.asc . -P"
 echo
 rclone copy gd:/sec/start/id_rsa.asc . -P
+echo
+sleep 2
+echo "gpg --decrypt id_rsa.asc > id_rsa"
+echo
 gpg --decrypt id_rsa.asc > id_rsa
 rm id*.asc
 sudo mkdir $HOME/.ssh
+echo; echo "SHH FOLDER RIGHTS"; echo
 sudo chown abraxas678:100 $HOME -R
 sudo chmod 700 -R $HOME
 mv id_rsa $HOME/.ssh
@@ -42,23 +53,33 @@ sudo chmod 644 ~/.ssh/config
 sudo chmod 600 ~/.ssh/id_rsa
 sudo chmod 644 ~/.ssh/id_rsa.pub
 echo
-git clone git@github.com:abraxas678/dotfiles.git
-
+sleep 2
+rclone copy gd:sec/dotfiles ./dotfiles -Pv --skip-links --fast-list
+#git clone git@github.com:abraxas678/dotfiles.git
+echo
+echo INSTALL ZSH
 echo; cd $HOME
 sudo apt install -y zsh
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 curl -L git.io/antigen > antigen.zsh
-
+echo
 echo; echo; echo "INSTALL KEEPASSXC"
 echo
+mykeepass="n"
+echo "WANT TO INSTALL KEEPASSXC? (y/n)"
+read -n 1 -t 20 mykeepass
 #printf "${BLUE3}"
+if [[ $mykeepass = "y" ]]; then
 sudo add-apt-repository ppa:phoerious/keepassxc -y
 sudo apt-get update
 sudo apt-get dist-upgrade -y
 #printf "${BLUE1}"
-
-sudo apt-get install -y nano curl nfs-common xclip keepassxc ssh-askpass jq taskwarrior android-tools-adb conky-all
-
+sudo apt-get install -y keepassxc
+fi
+echo
+echo "INSTALL sudo apt-get install -y nano curl nfs-common xclip ssh-askpass jq taskwarrior android-tools-adb conky-all"
+echo
+sudo apt-get install -y nano curl nfs-common xclip ssh-askpass jq taskwarrior android-tools-adb conky-all
 echo
 echo FONTS
 echo
