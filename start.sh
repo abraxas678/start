@@ -1,16 +1,34 @@
 #!/bin/bash
+clear
 echo
 echo SETUP GPG MANUALLY VIA OD VAULT
-rclone -v > rclonecheck
-if [[ $(cat rclonecheck) == *"not found"* ]]; then
+echo
+echo UPATE AND UPGRADE
+echo; sleep 2
+sudo apt-get update && sudo apt-get upgrade -y
+echo
+if [[ $(which rclone) = *"/usr/bin/rclone"* ]]
+then
+  echo; echo RCLONE INSTALLED
+else
   echo; echo INSTALL RCLONE
   apt install rclone -y
 fi
-rm rclonecheck
 if [[ ! -f ~/.config/rclone/rclone.conf ]]; then
   echo; echo "SETUP GD ON RCLONE"
   rclone config
 fi
+rclonesize=$(rclone size ~/.config/rclone/rclone.conf --json | jq .bytes)
+if [[ $(which gpg) = *"/usr/bin/gpg"* ]]
+then
+  echo; echo gpg INSTALLED
+else
+  echo; echo INSTALL gpg
+  apt install gpg -y
+fi
+echo; echo CLONE https://github.com/abraxas678/start.git; echo
+cd $HOME
+git clone https://github.com/abraxas678/start.git
 echo
 echo "gpg -a --export-secret-keys [key-id] >key.asc"
 echo "gpg --import"
@@ -18,13 +36,7 @@ echo
 echo BUTTON
 read me
 echo
-echo UPATE AND UPGRADE
-echo
-sleep 2
-sudo apt-get update && sudo apt-get upgrade -y
 cd $HOME
-echo; echo CLONE START; echo
-git clone https://github.com/abraxas678/start.git
 cd start
 echo; echo GPG DECRYPT RCLONESETUP; echo
 echo "gpg --decrypt rclone_secure_setup2gd.sh.asc > rclonesetup.sh"
