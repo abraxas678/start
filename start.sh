@@ -3,7 +3,7 @@ clear
 delstart="n"
 echo; echo "DELETE FOLDER START? (y/n)"; echo
 read -n 1 delstart
-if [[ $deltstart = "y" ]]
+if [[ $delstart = "y" ]]
 then
   cd $HOME
   rm -rf start
