@@ -4,7 +4,7 @@ echo
 echo SETUP GPG MANUALLY VIA OD VAULT
 echo
 echo UPATE AND UPGRADE
-echo; sleep 2
+echo; sleep 4
 sudo apt-get update && sudo apt-get upgrade -y
 echo
 if [[ $(which rclone) = *"/usr/bin/rclone"* ]]
@@ -28,6 +28,7 @@ else
 fi
 echo; echo CLONE https://github.com/abraxas678/start.git; echo
 cd $HOME
+sleep 2
 git clone https://github.com/abraxas678/start.git
 echo
 echo "gpg -a --export-secret-keys [key-id] >key.asc"
