@@ -1,5 +1,13 @@
 #!/bin/bash
 clear
+delstart="n"
+echo; echo "DELETE FOLDER START? (y/n)"; echo
+read delstart
+if [[ $deltstart = "y" ]]
+then
+  cd $HOME
+  rm -rf start
+fi
 echo
 echo SETUP GPG MANUALLY VIA OD VAULT
 echo
