@@ -1,6 +1,15 @@
 #!/bin/bash
 echo
 echo SETUP GPG MANUALLY VIA OD VAULT
+rclone -v > rclonecheck
+if [[ $(cat rclonecheck) == *"not found"* ]]; then
+  apt install rclone -y
+fi
+rm rclonecheck
+if [[ ! -f ~/.config/rclone/rclone.conf ]]; then
+  echo; echo "SETUP GD ON RCLONE"
+  rclone config
+fi
 echo
 echo "gpg -a --export-secret-keys [key-id] >key.asc"
 echo "gpg --import"
