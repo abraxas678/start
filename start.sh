@@ -2,7 +2,7 @@
 clear
 delstart="n"
 echo; echo "DELETE FOLDER START? (y/n)"; echo
-read delstart
+read -n 1 delstart
 if [[ $deltstart = "y" ]]
 then
   cd $HOME
