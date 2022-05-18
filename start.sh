@@ -3,6 +3,7 @@ echo
 echo SETUP GPG MANUALLY VIA OD VAULT
 rclone -v > rclonecheck
 if [[ $(cat rclonecheck) == *"not found"* ]]; then
+  echo; echo INSTALL RCLONE
   apt install rclone -y
 fi
 rm rclonecheck
