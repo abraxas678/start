@@ -85,12 +85,12 @@ sudo chmod 600 ~/.ssh/id_rsa
 sudo chmod 644 ~/.ssh/id_rsa.pub
 echo
 sleep 2
-rclone copy gdsec:dotfiles ./dotfiles -Pv --skip-links --fast-list
+##########################################rclone copy gdsec:dotfiles ./dotfiles -Pv --skip-links --fast-list
 #git clone git@github.com:abraxas678/dotfiles.git
 echo
 echo INSTALL ZSH
 echo; cd $HOME
-sudo apt install -y zsh
+sudo apt install -y zsh php
 echo; echo INSTALL OH MY ZSH
 sleep 2; echo
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
