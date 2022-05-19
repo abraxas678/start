@@ -91,6 +91,8 @@ echo
 echo INSTALL ZSH
 echo; cd $HOME
 sudo apt install -y zsh
+echo; echo INSTALL OH MY ZSH
+sleep 2; echo
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 curl -L git.io/antigen > antigen.zsh
 echo
