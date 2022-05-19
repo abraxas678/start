@@ -85,7 +85,7 @@ sudo chmod 600 ~/.ssh/id_rsa
 sudo chmod 644 ~/.ssh/id_rsa.pub
 echo
 sleep 2
-rclone copy gd:sec/dotfiles ./dotfiles -Pv --skip-links --fast-list
+rclone copy gdsec:dotfiles ./dotfiles -Pv --skip-links --fast-list
 #git clone git@github.com:abraxas678/dotfiles.git
 echo
 echo INSTALL ZSH
