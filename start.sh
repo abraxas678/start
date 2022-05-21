@@ -9,8 +9,6 @@ clear
 #  rm -rf start
 #fi
 echo
-echo SETUP GPG MANUALLY VIA OD VAULT
-echo
 echo UPATE AND UPGRADE
 echo; sleep 4
 sudo apt-get update && sudo apt-get upgrade -y
@@ -26,6 +24,9 @@ if [[ ! -f ~/.config/rclone/rclone.conf ]]; then
   echo; echo "SETUP GD ON RCLONE"
   rclone config
 fi
+echo
+echo SETUP GPG MANUALLY VIA OD VAULT
+echo
 rclonesize=$(rclone size ~/.config/rclone/rclone.conf --json | jq .bytes)
 if [[ $(which gpg) = *"/usr/bin/gpg"* ]]
 then
